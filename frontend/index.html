@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RepeTeacher</title>
+    <link rel="stylesheet" href="assets/styles.css?v=20260526-2">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Основная навигация">
+        <a class="brand" href="#calendar" data-route="calendar" aria-label="RepeTeacher">
+          <span class="brand-mark">RT</span>
+          <span class="brand-text">RepeTeacher</span>
+        </a>
+
+        <nav class="nav-list">
+          <a href="#calendar" data-route="calendar" class="nav-link is-active" title="Календарь">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+            <span>Календарь</span>
+          </a>
+          <a href="#students" data-route="students" class="nav-link" title="Ученики">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Ученики</span>
+          </a>
+          <a href="#notifications" data-route="notifications" class="nav-link" title="Уведомления">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.27 21a2 2 0 0 0 3.46 0M18 8A6 6 0 0 0 6 8c0 7-3 8-3 8h18s-3-1-3-8Z"/></svg>
+            <span>Уведомления</span>
+          </a>
+          <a href="#messenger" data-route="messenger" class="nav-link" title="Мессенджер">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/></svg>
+            <span>Мессенджер</span>
+          </a>
+          <a href="#settings" data-route="settings" class="nav-link" title="Настройки">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2Z"/><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+            <span>Настройки</span>
+          </a>
+          <a href="#profile" data-route="profile" class="nav-link nav-profile" title="Профиль">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg>
+            <span>Профиль</span>
+          </a>
+        </nav>
+
+        <button class="plain-button nav-exit" type="button" title="Выйти" data-role-logout>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          Выйти
+        </button>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="role-eyebrow">Личный кабинет репетитора</p>
+            <h1 id="page-title">Календарь</h1>
+          </div>
+          <a href="#profile" data-route="profile" class="user-chip" aria-label="Открыть профиль">
+            <span class="avatar">ВЗ</span>
+            <span>
+              <strong id="user-chip-name">Вадим Зильбертов</strong>
+              <small id="user-chip-role">Репетитор</small>
+            </span>
+          </a>
+        </header>
+
+        <section id="calendar" class="page is-active" data-page="calendar" aria-labelledby="calendar-title">
+          <div class="page-grid page-grid-calendar">
+            <section class="panel calendar-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow" id="week-label">Неделя</p>
+                  <h2 id="calendar-title">Календарь</h2>
+                </div>
+                <div class="calendar-actions">
+                  <button class="icon-button" type="button" aria-label="Предыдущая неделя" data-week-prev>‹</button>
+                  <button class="button button-primary" type="button" data-open-dialog="addLessonDialog">
+                    Добавить занятие
+                  </button>
+                  <button class="icon-button" type="button" aria-label="Следующая неделя" data-week-next>›</button>
+                </div>
+              </div>
+
+              <div class="week-grid" id="week-grid" aria-label="Недельное расписание"></div>
+            </section>
+
+            <aside class="side-stack">
+              <section class="panel compact-panel">
+                <div class="mini-calendar-head">
+                  <button class="icon-button" type="button" aria-label="Предыдущий месяц" data-calendar-prev>‹</button>
+                  <strong id="mini-calendar-title">Апрель 2026</strong>
+                  <button class="icon-button" type="button" aria-label="Следующий месяц" data-calendar-next>›</button>
+                </div>
+                <div class="mini-calendar" id="mini-calendar" aria-label="Мини календарь"></div>
+              </section>
+
+              <section class="panel compact-panel">
+                <div class="panel-header compact">
+                  <h2>Расписание</h2>
+                </div>
+                <button class="schedule-row" type="button" data-open-dialog="lessonDialog" disabled>
+                  <span>Нет занятий на эту дату</span>
+                </button>
+              </section>
+            </aside>
+          </div>
+        </section>
+
+        <section id="students" class="page" data-page="students" aria-labelledby="students-title">
+          <div class="page-grid page-grid-two">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow" id="people-eyebrow">Заявки, активные и архив</p>
+                  <h2 id="students-title">Ученики</h2>
+                </div>
+                <button class="button button-primary" type="button" data-open-dialog="addStudentDialog">
+                  Добавить
+                </button>
+              </div>
+
+              <label class="field">
+                <span id="people-search-label">Поиск ученика</span>
+                <input type="search" id="people-search" placeholder="Поиск..." data-filter="students-list">
+              </label>
+
+              <div class="list" id="students-list">
+                <p class="list-title">Пока нет учеников</p>
+              </div>
+            </section>
+
+            <section class="panel details-panel">
+              <p class="eyebrow" id="student-status">-</p>
+              <div class="person-head">
+                <span class="avatar large" id="student-avatar"></span>
+                <div>
+                  <h2 id="student-name">Нет выбранного ученика</h2>
+                  <p id="person-role-label">Ученик</p>
+                </div>
+              </div>
+
+              <button class="button" type="button" data-start-chat>Написать сообщение</button>
+
+              <div class="details-icons">
+                <div class="icon-text">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 4 8 8 8-8"/><path d="M4 4h16v16H4Z"/><path d="m4 20 6-6M20 20l-6-6"/></svg>
+                  <span id="student-email">-</span>
+                </div>
+                <div class="icon-text">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.63 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.2a2 2 0 0 1 2.11-.45c.84.3 1.71.51 2.61.63A2 2 0 0 1 22 16.92Z"/></svg>
+                  <span id="student-phone">-</span>
+                </div>
+              </div>
+
+              <div class="subject-block">
+                <h3>Предметы</h3>
+                <div class="icon-text">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/></svg>
+                  <span id="student-subject">-</span>
+                </div>
+              </div>
+
+              <div class="notes-block">
+                <h3>Заметки</h3>
+                <textarea id="student-notes" rows="5" placeholder="Добавить заметку..."></textarea>
+              </div>
+
+              <div class="action-row">
+                <button class="button" type="button" data-save-student-notes>Сохранить заметку</button>
+                <button class="button" type="button" data-archive-student>В архив</button>
+                <button class="button danger" type="button" data-delete-student>Удалить</button>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="notifications" class="page" data-page="notifications" aria-labelledby="notifications-title">
+          <div class="page-grid page-grid-two">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Переносы, отмены, сообщения</p>
+                  <h2 id="notifications-title">Уведомления</h2>
+                </div>
+                <button class="button" type="button" data-read-all-notifications>
+                  Прочитать все
+                </button>
+              </div>
+
+              <label class="field">
+                <span>Поиск уведомления</span>
+                <input type="search" placeholder="Поиск..." data-filter="notifications-list">
+              </label>
+
+              <div class="list" id="notifications-list">
+                <p class="list-title">Пока нет уведомлений</p>
+              </div>
+            </section>
+
+            <section class="panel details-panel">
+              <div class="notification-title-row">
+                <svg class="row-icon danger" id="notification-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>
+                <h2 id="notification-title">Нет уведомлений</h2>
+              </div>
+              <p class="lead" id="notification-text"></p>
+              <div class="action-row" id="notification-actions"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="messenger" class="page" data-page="messenger" aria-labelledby="messenger-title">
+          <div class="page-grid page-grid-two messenger-grid">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow" id="messenger-eyebrow">Переписка с учениками</p>
+                  <h2 id="messenger-title">Мессенджер</h2>
+                </div>
+              </div>
+
+              <label class="field">
+                <span>Поиск чата</span>
+                <input type="search" placeholder="Поиск..." data-filter="chat-list">
+              </label>
+
+              <div class="list" id="chat-list">
+                <p class="list-title">Пока нет чатов</p>
+              </div>
+            </section>
+
+            <section class="panel chat-panel">
+              <div class="chat-head">
+                <span class="avatar"></span>
+                <div>
+                  <strong>Нет выбранного чата</strong>
+                </div>
+              </div>
+
+              <div class="messages" id="messages">
+                <div class="message">
+                  <p>Выберите или создайте чат через API.</p>
+                </div>
+              </div>
+
+              <form class="chat-form" id="chat-form">
+                <input type="text" name="message" id="chat-message-input" placeholder="Написать сообщение..." autocomplete="off">
+                <button class="button button-primary send-button" type="submit" aria-label="Отправить">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                </button>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <section id="settings" class="page" data-page="settings" aria-labelledby="settings-title">
+          <div class="page-grid page-grid-settings">
+            <section class="panel settings-nav-panel">
+              <p class="eyebrow">Профиль и уведомления</p>
+              <h2 id="settings-title">Настройки</h2>
+              <div class="tab-list" role="tablist" aria-label="Разделы настроек">
+                <button class="tab-button is-active" type="button" data-tab="general">Общие</button>
+                <button class="tab-button" type="button" data-tab="notify">Уведомления</button>
+              </div>
+              <div class="settings-exit">
+                <button class="button danger full-width" type="button" data-toast="Выход будет подключен к backend позже">Выйти</button>
+              </div>
+            </section>
+
+            <section class="panel details-panel">
+              <div class="tab-panel is-active" data-tab-panel="general">
+                <div class="settings-profile">
+                  <div class="settings-main-info">
+                    <label class="form-field">
+                      <span>Имя</span>
+                      <input type="text" id="settings-profile-name" value="Вадим Зильбертов">
+                    </label>
+                    <label class="form-field">
+                      <span>Телефон</span>
+                      <input type="tel" id="settings-profile-phone" value="89198318673">
+                    </label>
+                    <label class="form-field">
+                      <span>Email</span>
+                      <input type="email" id="settings-profile-email" value="v4bem@ya.ru">
+                    </label>
+                  </div>
+                  <div class="profile-photo">
+                    <span class="avatar large">ВЗ</span>
+                    <button class="icon-button camera-button" type="button" aria-label="Изменить фото">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z"/><circle cx="12" cy="13" r="3"/></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="subject-block">
+                  <h3>Предметы</h3>
+                  <div class="subjects-line" id="profile-subjects">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5Z"/></svg>
+                    <span class="subject-pill" data-profile-subject="Русский язык">Русский язык <button type="button" aria-label="Убрать предмет" data-remove-subject>×</button></span>
+                    <span class="subject-pill" data-profile-subject="Математика">Математика <button type="button" aria-label="Убрать предмет" data-remove-subject>×</button></span>
+                  </div>
+                </div>
+
+                <div class="security-list">
+                  <h3>Безопасность</h3>
+                  <label><span>Текущий пароль:</span><input type="password" id="current-password" placeholder="******"></label>
+                  <label><span>Новый пароль:</span><input type="password" id="new-password" placeholder="******"></label>
+                  <label><span>Подтвердите пароль:</span><input type="password" id="confirm-password" placeholder="******"></label>
+                </div>
+
+                <div class="action-row">
+                  <button class="button" type="button" data-save-profile>Изменить</button>
+                  <button class="button danger" type="button" data-toast="Удаление профиля будет выполнять backend">Удалить профиль</button>
+                </div>
+              </div>
+
+              <div class="tab-panel" data-tab-panel="notify">
+                <h2>Уведомления</h2>
+                <div class="switch-list">
+                  <label class="switch-row"><span>Пуш-уведомления</span><input type="checkbox" id="notify-push" checked></label>
+                  <label class="switch-row"><span>Уведомления в telegram</span><input type="checkbox" id="notify-telegram" checked></label>
+                  <label class="switch-row"><span>Звук уведомлений</span><input type="checkbox" id="notify-sound" checked></label>
+                  <label class="switch-row"><span>Уведомление о занятии</span><input type="checkbox" id="notify-lessons"></label>
+                </div>
+                <button class="button accent-button" type="button" data-save-notification-settings>
+                  Сохранить изменения
+                </button>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="profile" class="page" data-page="profile" aria-labelledby="profile-title">
+          <div class="page-grid page-grid-two">
+            <section class="panel details-panel">
+              <p class="eyebrow">Личный профиль</p>
+              <div class="person-head">
+                <span class="avatar large">ВЗ</span>
+                <div>
+                  <h2 id="profile-title">Вадим Зильбертов</h2>
+                <p id="profile-role-label">Репетитор</p>
+                </div>
+              </div>
+              <dl class="info-list">
+                <div><dt>Email</dt><dd id="profile-email">v4bem@ya.ru</dd></div>
+                <div><dt>Телефон</dt><dd id="profile-phone">89198318673</dd></div>
+                <div><dt>Предметы</dt><dd id="profile-subjects-text">Русский язык, Математика</dd></div>
+              </dl>
+              <div class="action-row">
+                <button class="button" type="button" data-goto-page="settings">Редактировать профиль</button>
+                <button class="button danger" type="button" data-toast="Удаление профиля в учебном режиме не используется">Удалить профиль</button>
+              </div>
+            </section>
+
+            <section class="panel">
+              <p class="eyebrow">Статистика</p>
+              <div class="stats-grid">
+                <div class="stat-card"><span>Всего занятий</span><strong>0</strong></div>
+                <div class="stat-card"><span>Активных учеников</span><strong>0</strong></div>
+                <div class="stat-card"><span>Заявок</span><strong>0</strong></div>
+              </div>
+              <h3>По предметам</h3>
+              <div class="subject-line"><span>Математика</span><strong>0 занятий</strong></div>
+              <div class="subject-line"><span>Русский язык</span><strong>0 занятий</strong></div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="modal" id="lessonDialog">
+      <form method="dialog" class="modal-card">
+        <div class="modal-head">
+          <h2>Занятие</h2>
+          <button class="icon-button" type="submit" aria-label="Закрыть">×</button>
+        </div>
+        <div class="person-head modal-person">
+          <span class="avatar" id="lesson-dialog-avatar"></span>
+          <div>
+            <strong id="lesson-dialog-student">Нет выбранного ученика</strong>
+            <small id="lesson-dialog-status">Ученик</small>
+          </div>
+        </div>
+        <button class="button full-width" type="button" data-start-lesson-chat>Написать сообщение</button>
+
+        <div class="modal-details-grid">
+          <div>
+            <p id="lesson-dialog-date">Дата - не выбрана</p>
+            <p id="lesson-dialog-time">Время - не выбрано</p>
+          </div>
+          <div>
+            <p id="lesson-dialog-subject">Предмет - не выбран</p>
+            <p id="lesson-dialog-exam">Экзамен - не выбран</p>
+            <p id="lesson-dialog-format">Формат - не выбран</p>
+            <p id="lesson-dialog-price">Цена - не выбрана</p>
+          </div>
+        </div>
+
+        <div class="form-grid lesson-reschedule-controls">
+          <label class="form-field">
+            <span>Новая дата</span>
+            <input type="date" id="lesson-reschedule-date">
+          </label>
+          <label class="form-field">
+            <span>Новое время</span>
+            <input type="time" id="lesson-reschedule-time">
+          </label>
+        </div>
+
+        <div class="action-row modal-actions">
+          <button class="button" type="button" data-reschedule-lesson>Перенести занятие</button>
+          <button class="button danger" type="button" data-cancel-lesson>Отменить занятие</button>
+        </div>
+
+        <div class="file-grid">
+          <div>
+            <h3>Материалы с занятия</h3>
+            <div class="file-list" id="lesson-material-files"><span class="file-pill">Нет файлов</span></div>
+            <div class="file-controls">
+              <input type="text" data-file-name="material" placeholder="material.pdf">
+              <button class="link-button" type="button" data-add-lesson-file="material">Прикрепить</button>
+            </div>
+          </div>
+          <div>
+            <h3>Домашнее задание</h3>
+            <div class="file-list" id="lesson-homework-files"><span class="file-pill">Нет файлов</span></div>
+            <div class="file-controls">
+              <input type="text" data-file-name="homework" placeholder="homework.pdf">
+              <button class="link-button" type="button" data-add-lesson-file="homework">Прикрепить</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="addLessonDialog">
+      <form class="modal-card" id="add-lesson-form">
+        <div class="modal-head">
+          <h2>Добавить занятие</h2>
+          <button class="icon-button" type="button" data-close-dialog aria-label="Закрыть">×</button>
+        </div>
+
+        <label class="form-field">
+          <span id="lesson-person-label">Ученик</span>
+          <select name="student_id" required>
+            <option value="">Сначала добавьте ученика</option>
+          </select>
+        </label>
+
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Предмет</span>
+            <select name="subject" required></select>
+          </label>
+          <label class="form-field">
+            <span>Экзамен</span>
+            <select name="exam_type" required>
+              <option value="ОГЭ">ОГЭ</option>
+              <option value="ЕГЭ">ЕГЭ</option>
+              <option value="Олимпиады">Олимпиады</option>
+              <option value="Школа">Школа</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>Дата</span>
+            <input type="date" name="lesson_date" required value="2026-04-02">
+          </label>
+          <label class="form-field">
+            <span>Время</span>
+            <input type="time" name="start_time" required value="10:00">
+          </label>
+          <label class="form-field">
+            <span>Длительность, минут</span>
+            <input type="number" name="duration_minutes" min="15" step="15" required value="60">
+          </label>
+          <label class="form-field">
+            <span>Цена</span>
+            <input type="number" name="price" min="0" step="50" required value="700">
+          </label>
+        </div>
+
+        <div class="format-block">
+          <p class="format-title">Формат</p>
+          <div class="segmented" aria-label="Формат занятия">
+            <label><input type="radio" name="format" value="online" checked> Онлайн</label>
+            <label><input type="radio" name="format" value="offline"> Очно</label>
+          </div>
+        </div>
+
+        <label class="switch-row compact-switch">
+          <span>Есть домашнее задание</span>
+          <input type="checkbox" name="has_homework" checked>
+        </label>
+
+        <button class="button button-primary full-width" type="submit">
+          Добавить занятие
+        </button>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="addStudentDialog">
+      <form class="modal-card" id="add-student-form">
+        <div class="modal-head">
+          <h2>Добавить ученика</h2>
+          <button class="icon-button" type="button" data-close-dialog aria-label="Закрыть">×</button>
+        </div>
+
+        <label class="form-field">
+          <span>Имя</span>
+          <input type="text" name="name" required placeholder="Иван Иванов">
+        </label>
+        <label class="form-field">
+          <span>Email</span>
+          <input type="email" name="email" required placeholder="student@example.com">
+        </label>
+        <label class="form-field">
+          <span>Телефон</span>
+          <input type="tel" name="phone" required placeholder="89190000000">
+        </label>
+        <div class="form-field">
+          <span>Предметы</span>
+          <div class="checkbox-list" id="student-subject-options"></div>
+        </div>
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Экзамен</span>
+            <select name="exam_type" required>
+              <option value="ОГЭ">ОГЭ</option>
+              <option value="ЕГЭ">ЕГЭ</option>
+              <option value="Олимпиады">Олимпиады</option>
+              <option value="Школа">Школа</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>Статус</span>
+            <select name="status" required>
+              <option value="active">Активный ученик</option>
+              <option value="request">Заявка</option>
+            </select>
+          </label>
+        </div>
+        <label class="form-field">
+          <span>Заметки</span>
+          <textarea name="notes" rows="4" placeholder="Короткая заметка"></textarea>
+        </label>
+
+        <button class="button button-primary full-width" type="submit">
+          Добавить ученика
+        </button>
+      </form>
+    </dialog>
+
+    <dialog class="modal role-modal" id="roleDialog">
+      <form method="dialog" class="modal-card role-card">
+        <div class="modal-head">
+          <h2>Учебный вход</h2>
+        </div>
+        <p class="lead">Выберите, какой кабинет показать преподавателю.</p>
+        <div class="role-choice-grid">
+          <button class="role-choice" type="button" data-login-role="tutor">
+            <span class="avatar"></span>
+            <strong>Репетитор</strong>
+            <small>Вадим Зильбертов</small>
+          </button>
+          <button class="role-choice" type="button" data-login-role="student">
+            <span class="avatar"></span>
+            <strong>Ученик</strong>
+            <small>Тестовый Ученик</small>
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" id="addTutorDialog">
+      <form class="modal-card" id="add-tutor-form">
+        <div class="modal-head">
+          <h2>Добавить репетитора</h2>
+          <button class="icon-button" type="button" data-close-dialog aria-label="Закрыть">×</button>
+        </div>
+
+        <label class="form-field">
+          <span>Имя</span>
+          <input type="text" name="name" required placeholder="Анна Смирнова">
+        </label>
+        <label class="form-field">
+          <span>Email</span>
+          <input type="email" name="email" required placeholder="tutor@example.com">
+        </label>
+        <label class="form-field">
+          <span>Телефон</span>
+          <input type="tel" name="phone" required placeholder="89190000000">
+        </label>
+        <div class="form-field">
+          <span>Предметы</span>
+          <div class="checkbox-list" id="tutor-subject-options">
+            <label><input type="checkbox" name="subjects" value="Математика" checked> Математика</label>
+            <label><input type="checkbox" name="subjects" value="Русский язык"> Русский язык</label>
+            <label><input type="checkbox" name="subjects" value="Английский язык"> Английский язык</label>
+          </div>
+        </div>
+
+        <button class="button button-primary full-width" type="submit">
+          Добавить репетитора
+        </button>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="assets/app.js?v=20260526-2"></script>
+  </body>
+</html>

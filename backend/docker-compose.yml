@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: repeteacher-postgres
+    environment:
+      POSTGRES_DB: repe_teacher
+      POSTGRES_USER: repe_teacher
+      POSTGRES_PASSWORD: repe_teacher
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - repeteacher_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U repe_teacher -d repe_teacher"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  repeteacher_pg_data:

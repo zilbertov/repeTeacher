@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS lesson_files;
+DROP TABLE IF EXISTS lessons;
